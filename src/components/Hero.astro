@@ -1,0 +1,49 @@
+---
+import { getImage } from 'astro:assets';
+import heroPc from '../assets/images/hero.png';
+import heroTablet from '../assets/images/tablet-hero.png';
+import heroSp from '../assets/images/sp-hero.png';
+
+const pc = await getImage({ src: heroPc, format: 'webp' });
+const tablet = await getImage({ src: heroTablet, format: 'webp' });
+const sp = await getImage({ src: heroSp, format: 'webp' });
+---
+<div class="hero">
+  <div class="inner">
+    <picture class="hero-image">
+      <source media="(max-width: 576px)" srcset={sp.src} />
+      <source media="(max-width: 820px)" srcset={tablet.src} />
+      <img src={pc.src} alt="" />
+    </picture>
+    <button class="btn">予約する</button>
+    <button class="btn">お問い合わせ</button>
+  </div>
+</div>
+
+<style lang="scss">
+  @use '../styles/variables' as *;
+  @use '../styles/mixins' as *;
+
+  .hero {
+    position: relative;
+    width: 100%;
+    height: 100svh;
+    overflow: hidden;
+  }
+
+  .inner {
+    position: relative;
+    height: 100%;
+    z-index: 1;
+  }
+
+  .hero-image,
+  .hero-image img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+</style>

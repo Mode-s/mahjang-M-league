@@ -1,0 +1,158 @@
+---
+import { Icon } from 'astro-icon/components';
+
+const items = [
+  {
+    icon: 'ph:users-four',
+    title: 'ヨンマフリー',
+    pricePrefix: null,
+    priceNumber: '300',
+    priceUnit: '円',
+    description: '4人打ちのフリー卓。一人でもご参加いただけます。',
+    extension: '',
+  },
+  {
+    icon: 'ph:users-three',
+    title: 'サンマフリー',
+    pricePrefix: null,
+    priceNumber: '300',
+    priceUnit: '円',
+    description: '3人打ちのフリー卓。スピーディーに楽しめる三人麻雀を気軽にどうぞ。',
+    extension: '',
+  },
+  {
+    icon: 'ph:confetti',
+    title: 'セットオープン特価',
+    pricePrefix: null,
+    priceNumber: '900',
+    priceUnit: '円 / 1時間',
+    description: 'オープン記念の特別価格でお楽しみいただけます。',
+    extension: '',
+  },
+]
+---
+<section class="section plan" id="plan">
+  <div class="inner">
+    <div class="title-wrapper">
+      <h2 class="title">料金プラン</h2>
+    </div>
+    <div class="content">
+      <ul class="list">
+        {items.map((item) => (
+          <li class="card-item">
+            <Icon name={item.icon} class="icon" />
+            <h3 class="card-title">{item.title}</h3>
+            <p class="price">
+              {item.pricePrefix && <span class="price-prefix">{item.pricePrefix}</span>}
+              <span class="price-number">{item.priceNumber}</span>
+              <span class="price-unit">{item.priceUnit}</span>
+            </p>
+            <p class="description">{item.description}</p>
+            <p class="extension">{item.extension}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+    <p class="caution">※価格はすべて税込みです。 ※料金プランは予告なく変更する場合がございます。</p>
+  </div>
+</section>
+
+<style lang="scss">
+  @use '../styles/_variables' as *;
+  @use '../styles/_mixins' as *;
+
+  .section {
+    // global共通化
+  }
+
+  .inner {
+    // global共通化
+  }
+
+  .title-wrapper {
+    // global共通化
+  }
+
+  .list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    margin-top: 80px;
+
+    @include pc {
+      grid-template-columns: 1fr;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+  }
+
+  .card-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .icon {
+    width: 56px;
+    height: 56px;
+    color: $color-icon;
+  }
+
+  .card-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+
+  .price {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+  }
+
+  .price-prefix {
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+
+  .price-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  .price-unit {
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+
+  .description {
+    flex: 1;
+
+    @include sp {
+      font-size: 0.9rem;
+    }
+  }
+
+  .extension {
+    text-align: center;
+    width: 100%;
+    border-top: 1px solid $color-border;
+    padding-top: 12px;
+  }
+  
+  .caution {
+    text-align: center;
+    margin-top: 40px;
+    color: $color-caution;
+    opacity: 0.7;
+
+    @include tablet {
+      font-size: 0.8rem;
+    }
+
+    @include sp {
+      font-size: 0.6rem;
+    }
+  }
+</style>

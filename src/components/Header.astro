@@ -1,0 +1,254 @@
+---
+import { Image } from 'astro:assets';
+import { Icon } from 'astro-icon/components';
+import logo from '../assets/images/logo.png';
+---
+<header class="header">
+  <div class="inner">
+    <h1 class="logo">
+      <a href="#" class="logo-link">
+        <Image src={logo} alt="logo" class="logo-image" />
+      </a>
+    </h1>
+    <button class="menu-button" type="button" aria-expanded="false" aria-controls="gloval-nav">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+    <nav class="navigation">
+      <ul class="list">
+        <li class="item"><a href="/#about" class="link">はじめての方へ</a></li>
+        <li class="item"><a href="/#plan" class="link">料金プラン</a></li>
+        <li class="item"><a href="/#info" class="link">店舗情報</a></li>
+        <li class="item"><a href="/#access" class="link">アクセス</a></li>
+        <li class="item"><a href="/#contact" class="link btn">お問い合わせ</a></li>
+      </ul>
+      <div class="menu-footer">
+        <a href="/" class="menu-logo-link">
+          <Image src={ logo } alt="麻雀スタジオMリーチ" class="menu-logo" />
+        </a>
+        <div class="menu-sns">
+          <a href="https://line.me/R/ti/p/@865jwzbe" target="_blank" rel="noopener noreferrer" class="menu-sns-link" aria-label="LINE">
+            <Icon name="simple-icons:line" width={24} height={24} />
+          </a>
+          <a href="https://www.instagram.com/mreach_fukui?igsh=NnIybjJmOXhrb21k" target="_blank" rel="noopener noreferrer" class="menu-sns-link" aria-label="Instagram">
+            <Icon name="simple-icons:instagram" width={24} height={24} />
+          </a>
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<style lang="scss">
+  @use '../styles/_variables' as *;
+  @use '../styles/_mixins' as *;
+
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 200;
+    padding: 10px 20px;
+    background-color: transparent;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  .header.is-scrolled {
+    background-color: $color-bg;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  }
+  .inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1024px;
+    margin: 0 auto;
+  }
+  .logo-link {
+    display: flex;
+    align-items: center;
+    height: 60px;
+  }
+  .logo-image {
+    max-width: 200px;
+    width: auto;
+    object-fit: contain;
+  }
+  .menu-button {
+    display: none;
+    
+    @include tablet {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      width: 48px;
+      height: 48px;
+      background-color: $color-bg;
+      border-radius: 50%;
+      cursor: pointer;
+      z-index: 101;
+    }
+  }
+  .bar {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background-color: #000000;
+    border-radius: 1px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+  .header.is-open .bar {
+    @include tablet {
+      &:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+      }
+      &:nth-child(2) {
+        opacity: 0;
+      }
+      &:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+      }
+    }
+  }
+  .navigation {
+    @include tablet {
+      position: fixed;
+      inset: 0;
+      background-color: $color-bg;
+      transform: translateX(100%);
+      transition: transform 0.3s ease;
+      z-index: 100;
+    }
+  }
+  .header.is-open .navigation {
+    @include tablet {
+      transform: translateX(0);
+    }
+  }
+  .list {
+    display: flex;
+    gap: 20px;
+    font-weight: 500;
+    font-size: 0.9rem;
+
+    @include tablet {
+      display: none;
+    }
+  }
+  .header.is-open .list {
+    @include tablet {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      flex: 1;
+      gap: 10px;
+      padding: 50px 24px 80px;
+    }
+  }
+  .link {
+    padding: 10px;
+  }
+  .header.is-open .link {
+    @include tablet {
+      display: inline-block;
+      margin-top: 10px;
+    }
+  }
+
+  .link:hover {
+    @include bounce-hover;
+  }
+
+  .btn {
+    padding: 10px 15px;
+    border-radius: 50px;
+    background-color: $color-icon;
+    color: $color-sns;
+    transition: background-color 0.4s ease;
+
+    &:hover {
+      background-color: $color-icon-hv;
+    }
+  }
+  .header.is-open .btn {
+    @include tablet {
+      margin: 0 auto;
+      padding: 10px 50px;
+    }
+  }
+
+  .menu-footer {
+    display: none;
+  }
+
+  .header.is-open .menu-footer {
+    @include tablet {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      padding: 40px 24px 0;
+    }
+  }
+
+  .menu-logo {
+    max-width: 160px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+  }
+
+  .menu-sns {
+    display: flex;
+    gap: 20px;
+  }
+
+  .menu-sns-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background-color: $color-text;
+    color: $color-bg;
+    @include bounce-hover;
+  }
+</style>
+
+<script>
+  const header = document.querySelector('.header');
+  const button = document.querySelector('.menu-button');
+  const SCROLL_THRESHOLD = 50;
+
+  button?.addEventListener('click', () => {
+    const isOpen = header?.classList.toggle('is-open');
+    button.setAttribute('aria-expanded', String(isOpen));
+    button.setAttribute('aria-label', isOpen ? 'メニューを閉じる' : 'メニューを開く');
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  })
+
+  document.querySelectorAll('.navigation .link').forEach((link) => {
+    link.addEventListener('click', () => {
+      header?.classList.remove('is-open');
+      button?.setAttribute('aria-expanded', 'false');
+      button?.setAttribute('aria-label', 'メニューを開く');
+      document.body.style.overflow = '';
+    });
+  });
+
+  const onScroll = () => {
+    if (window.scrollY > SCROLL_THRESHOLD) {
+      header?.classList.add('is-scrolled');
+    } else {
+      header?.classList.remove('is-scrolled');
+    }
+  };
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+</script>

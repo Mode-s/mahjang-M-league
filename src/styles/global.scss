@@ -1,0 +1,46 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: $color-bg;
+  color: $color-text;
+  line-height: 1.8;
+}
+
+a {
+  display: block;
+}
+
+img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.section {
+  padding: 150px 40px;
+
+    @include sp {
+      padding: 100px 20px;
+    }
+}
+
+.section .inner {
+  max-width: 1024px;
+  margin: 0 auto;
+}
+
+.title-wrapper {
+  text-align: center;
+  font-size: 3rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+
+  @include sp {
+    font-size: 2rem;
+  }
+}

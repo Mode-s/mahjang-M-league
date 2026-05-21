@@ -1,0 +1,88 @@
+---
+import { Icon } from 'astro-icon/components';
+
+const items = [
+  {
+    icon: 'mdi:sprout',
+    title: '初心者でも安心',
+    description: 'スタッフが丁寧にサポートします。ルールがわからなくても大丈夫！楽しく覚えられます。'
+  },
+  {
+    icon: 'mdi:lightbulb-on-outline',
+    title: '明るく入りやすい空間',
+    description: '清潔感のある店内で、女性やおひとり様でも入りやすい雰囲気。快適に麻雀を楽しめます。'
+  },
+  {
+    icon: 'mdi:account-group',
+    title: '仲間と楽しめる',
+    description: 'フリーで気軽に打てるのはもちろん、セット利用で仲間とワイワイ！麻雀の輪が広がります。'
+  },
+]
+---
+
+<section class="section about" id="about">
+  <div class="inner">
+    <div class="title-wrapper">
+      <h2 class="title">Mリーチについて</h2>
+    </div>
+    <div class="content">
+      <ul class="list">
+        {items.map((item) => (
+          <li class="card-item">
+            <Icon name={item.icon} class='icon' />
+            <h3 class="card-title">{item.title}</h3>
+            <p class="description">{item.description}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</section>
+
+<style lang="scss">
+  @use '../styles/_variables' as *;
+  @use '../styles/_mixins' as *;
+
+  .section {
+    // global共通化
+  }
+
+  .inner {
+    // global共通化
+  }
+
+  .title-wrapper {
+    // global共通化
+  }
+
+  .list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    margin-top: 80px;
+
+    @include pc {
+      grid-template-columns: 1fr;
+      max-width: 480px;
+      margin: 40px auto 0;
+    }
+  }
+
+  .card-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .icon {
+    width: 64px;
+    height: 64px;
+    color: $color-icon;
+  }
+
+  .card-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+</style>

@@ -1,0 +1,160 @@
+---
+import { Image } from 'astro:assets';
+import { Icon } from 'astro-icon/components';
+import logo from '../assets/images/logo.png';
+---
+<footer class="footer">
+  <div class="inner">
+    <div class="top">
+      <div class="brand">
+        <a href="/" class="logo-link">
+          <Image src={logo} alt="麻雀スタジオMリーチ" class="logo" />
+        </a>
+        <address class="address">
+          〒910-0016 福井県福井市大宮2丁目20-20<br />
+          <a href="tel:0776766314">TEL: 0776-76-6314</a>
+        </address>
+      </div>
+      <nav class="nav" aria-label="フッターナビゲーション">
+        <ul class="nav-list">
+          <li><a href="#about" class="nav-link">はじめての方へ</a></li>
+          <li><a href="#plan" class="nav-link">料金プラン</a></li>
+          <li><a href="#info" class="nav-link">店舗情報</a></li>
+          <li><a href="#access" class="nav-link">アクセス</a></li>
+          <li><a href="#contact" class="nav-link">お問い合わせ</a></li>
+        </ul>
+      </nav>
+      <div class="sns">
+        <a href="https://line.me/R/ti/p/@865jwzbe" target="_blank" rel="noopener noreferrer" class="sns-link" aria-label="LINE">
+          <Icon name="simple-icons:line" width={24} height={24} />
+        </a>
+        <a href="https://www.instagram.com/mreach_fukui?igsh=NnIybjJmOXhrb21k" target="_blank" rel="noopener noreferrer" class="sns-link" aria-label="Instagram">
+          <Icon name="simple-icons:instagram" width={24} height={24} />
+        </a>
+      </div>
+    </div>
+    <div class="bottom">
+      <small class="copyright">&copy; 2026 麻雀スタジオMリーチ All rights reserved.</small>
+    </div>
+  </div>
+</footer>
+
+<style lang="scss">
+  @use '../styles/_variables' as *;
+  @use '../styles/_mixins' as *;
+
+  .footer {
+    background-color: $color-footer;
+    color: #FDFCFC;
+    padding: 60px 40px 32px;
+
+    @include tablet {
+      padding: 48px 20px 24px;
+    }
+  }
+
+  .inner {
+    max-width: 1024px;
+    margin: 0 auto;
+  }
+
+  .top {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    gap: 48px;
+    align-items: start;
+    padding-bottom: 40px;
+    border-bottom: 1px solid $color-border;
+
+    @include tablet {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+  }
+
+  .logo-link {
+    display: inline-block;
+  }
+
+  .logo {
+    max-width: 160px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+  }
+
+  .address {
+    font-size: 0.9rem;
+    opacity: 0.7;
+
+    a {
+      display: inline;
+      opacity: 1;
+    }
+
+    @include sp {
+      font-size: 0.8rem;
+    }
+  }
+
+  .nav-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    @include tablet {
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 8px 20px;
+    }
+
+    @include sp {
+      flex-direction: column;
+    }
+  }
+
+  .nav-link {
+    display: inline-block;
+    font-size: 0.9rem;
+    opacity: 0.7;
+    transition: opacity 0.5s ease;
+
+    &:hover {
+      @include bounce-hover;
+    }
+  }
+
+  .sns {
+    display: flex;
+    gap: 16px;
+  }
+
+  .sns-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background-color: $color-sns-bg;
+    transition: background-color 0.4s ease;
+
+    &:hover {
+      @include bounce-hover;
+    }
+  }
+
+  .bottom {
+    padding-top: 30px;
+    text-align: center;
+  }
+
+  .copyright {
+    font-size: 0.8rem;
+    opacity: 0.5;
+
+    @include sp {
+      font-size: 0.7rem;
+    }
+  }
+</style>

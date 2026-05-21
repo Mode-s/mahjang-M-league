@@ -1,0 +1,120 @@
+---
+import { Icon } from 'astro-icon/components';
+---
+<section class="section contact" id="contact">
+  <div class="inner">
+    <div class="title-wrapper">
+      <h2 class="title">お問い合わせ</h2>
+    </div>
+    <p class="lead">お気軽にお電話または各SNSからお問い合わせください。</p>
+    <div class="content">
+      <ul class="list">
+        <li class="item">
+          <a href="tel:0776766314" class="link tel-link">
+            <Icon name="mdi:phone" class="icon" width={40} height={40}  aria-hidden="true" />
+            <span class="text">
+              <span class="label">電話でのお問い合わせ</span>
+            </span>
+          </a>
+        </li>
+        <li class="item">
+          <a href="https://line.me/R/ti/p/@865jwzbe" target="_blank" rel="noopener noreferrer" class="link line-link">
+            <Icon name="simple-icons:line" class="icon" width={40} height={40}  aria-hidden="true" />
+            <span class="text">
+              <span class="label">LINEでのお問い合わせ</span>
+            </span>
+          </a>
+        </li>
+        <li class="item">
+          <a href="https://www.instagram.com/mreach_fukui?igsh=NnIybjJmOXhrb21k" target="_blank" rel="noopener noreferrer" class="link instagram-link">
+            <Icon name="simple-icons:instagram" class="icon" width={40} height={40}  aria-hidden="true" />
+            <span class="text">
+              <span class="label">Instagramでチェック</span>
+            </span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<style lang="scss">
+  @use '../styles/_variables' as *;
+  @use '../styles/_mixins' as *;
+
+  .section {
+    // global共通化
+  }
+
+  .inner {
+    // global共通化
+  }
+
+  .title-wrapper {
+    // global共通化
+  }
+
+  .lead {
+    text-align: center;
+    font-size: 0.9rem;
+
+    @include sp {
+      font-size: 0.6rem;
+    }
+  }
+
+  .list {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin: 60px auto;
+
+    @include tablet {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+
+  .item {
+    display: flex;
+  }
+
+  .link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 600px;
+    width: 100%;
+    gap: 20px;
+    padding: 32px 24px;
+    border-radius: 12px;
+    color: $color-sns;
+    transition: opacity 0.5s ease;
+
+    @include bounce-hover;
+
+  }
+
+  .tel-link {
+    background-color: $color-tel;
+  }
+
+  .line-link {
+    background-color: $color-line;
+  }
+
+  .instagram-link {
+    background-color: $color-insta;
+  }
+
+  .icon {
+    width: 40px;
+    height: 40px;
+    
+    @include tablet {
+      width: 30px;
+      height: 30px;
+    }
+  }
+</style>

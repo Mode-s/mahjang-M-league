@@ -1,0 +1,110 @@
+---
+---
+<section class="section info" id="info">
+  <div class="inner">
+    <div class="title-wrapper">
+      <h2 class="title">店舗情報</h2>
+    </div>
+    <div class="content">
+      <dl class="table">
+        <div class="row">
+          <dt class="label">店舗名</dt>
+          <dd class="value">麻雀スタジオMリーチ</dd>
+        </div>
+        <div class="row">
+          <dt class="label">住所</dt>
+          <dd class="value">福井県福井市大宮2丁目20-20</dd>
+        </div>
+        <div class="row">
+          <dt class="label">最寄駅</dt>
+          <dd class="value">福井鉄道田原町駅 徒歩20分</dd>
+        </div>
+        <div class="row">
+          <dt class="label">電話番号</dt>
+          <dd class="value">
+            <a href="tel:0776766314">0776766314</a>
+          </dd>
+        </div>
+        <div class="row">
+          <dt class="label">営業時間</dt>
+          <dd class="value">（平日）14:30から23:30</dd>
+          <dd class="value reverse">（土日祝）13:30から23:30</dd>
+        </div>
+        <div class="row">
+          <dt class="label">定休日</dt>
+          <dd class="value">定休日なし</dd>
+        </div>
+        <div class="row">
+          <dt class="label">席数</dt>
+          <dd class="value">4卓</dd>
+        </div>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<style lang="scss">
+  @use '../styles/_variables' as *;
+  @use '../styles/_mixins' as *;
+
+  .section {
+    // global共通化
+  }
+
+  .inner {
+    // global共通化
+  }
+
+  .title-wrapper {
+    // global共通化
+  }
+
+  .table {
+    max-width: 680px;
+    margin: 60px auto 0;
+  }
+
+  .row {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 16px;
+    padding: 20px 0;
+    border-bottom: 1px solid $color-border;
+
+    &:first-child {
+      border-top: 1px solid $color-border;
+    }
+  }
+
+  .label {
+    font-weight: 700;
+    font-size: 0.9rem;
+    padding-top: 2px;
+
+    @include sp {
+      font-size: 0.8rem;
+    }
+  }
+
+  .value {
+    text-align: center;
+    font-size: 0.9rem;
+
+    a {
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    @include sp {
+      font-size: 0.7rem;
+    }
+  }
+
+  .value a {
+    display: inline;
+  }
+
+  .value.reverse {
+    grid-column: 2;
+  }
+</style>

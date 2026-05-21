@@ -1,0 +1,45 @@
+---
+import '../styles/reset.css';
+import '../styles/global.scss';
+
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<html lang="ja">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" href="/favicon.ico" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="generator" content={Astro.generator} />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+1p&display=swap" rel="stylesheet">
+
+		<title></title>
+    <meta name="description" content="このページの内容を要約した説明文">
+    <link rel="canonical" href="https://example.com/page">
+    <meta name="robots" content="index, follow">
+
+    <meta property="og:title" content="ページタイトル">
+    <meta property="og:description" content="ページの説明">
+    <meta property="og:type" content="website"> <!-- article, blog 等 -->
+    <meta property="og:url" content="https://example.com/page">
+    <meta property="og:image" content="https://example.com/ogp.jpg"> <!-- 推奨1200x630px -->
+    <meta property="og:site_name" content="サイト名">
+    <meta property="og:locale" content="ja_JP">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="ページタイトル">
+    <meta name="twitter:description" content="ページの説明">
+    <meta name="twitter:image" content="https://example.com/ogp.jpg">
+    <!-- <meta name="twitter:site" content="@アカウント名">      アカウントがある場合、要設定        -->
+	<body>
+		<Header />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+	</body>
+</html>
