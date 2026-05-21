@@ -1,5 +1,7 @@
 ---
+import { Image } from 'astro:assets';
 import { Icon } from 'astro-icon/components';
+import decoration2 from '../assets/decorations/decoration2.png';
 
 const items = [
   {
@@ -32,6 +34,7 @@ const items = [
 ]
 ---
 <section class="section plan" id="plan">
+  <Image src={decoration2} alt="" class="deco" aria-hidden="true" />
   <div class="inner">
     <div class="title-wrapper">
       <h2 class="title">料金プラン</h2>
@@ -63,6 +66,21 @@ const items = [
 
   .section {
     // global共通化
+  }
+
+  .plan {
+    position: relative;
+  }
+
+  .deco {
+    position: absolute;
+    bottom: -20px;
+    left: -30px;
+    width: 300px;
+    height: auto;
+    opacity: 0.1;
+    rotate: -15deg;
+    pointer-events: none;
   }
 
   .inner {

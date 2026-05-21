@@ -1,6 +1,9 @@
 ---
+import { Image } from 'astro:assets';
+import decoration3 from '../assets/decorations/decoration3.png';
 ---
 <section class="section access" id="access">
+  <Image src={decoration3} alt="" class="deco" aria-hidden="true" />
   <div class="inner">
     <div class="title-wrapper">
       <h2 class="title">アクセス</h2>
@@ -20,6 +23,21 @@
 
   .section {
     // global共通化
+  }
+
+  .access {
+    position: relative;
+  }
+
+  .deco {
+    position: absolute;
+    top: -110px;
+    right: -20px;
+    width: 260px;
+    height: auto;
+    opacity: 0.1;
+    rotate: 10deg;
+    pointer-events: none;
   }
 
   .inner {

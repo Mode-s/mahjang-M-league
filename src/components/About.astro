@@ -1,5 +1,8 @@
 ---
+import { Image } from 'astro:assets';
 import { Icon } from 'astro-icon/components';
+import decoration1 from '../assets/decorations/decoration1.png';
+
 
 const items = [
   {
@@ -21,6 +24,7 @@ const items = [
 ---
 
 <section class="section about" id="about">
+  <Image src={decoration1} alt="" class="deco" aria-hidden="true" />
   <div class="inner">
     <div class="title-wrapper">
       <h2 class="title">Mリーチについて</h2>
@@ -45,6 +49,21 @@ const items = [
 
   .section {
     // global共通化
+  }
+
+  .about {
+    position: relative;
+  }
+
+  .deco {
+    position: absolute;
+    top: 100px;
+    right: -30px;
+    width: 300px;
+    height: auto;
+    opacity: 0.12;
+    rotate: 15deg;
+    pointer-events: none;
   }
 
   .inner {
