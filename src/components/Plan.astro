@@ -5,7 +5,7 @@ import decoration2 from '../assets/decorations/decoration2.png';
 
 const items = [
   {
-    icon: 'ph:users-four',
+    icon: 'ph:user',
     title: '基本料金',
     pricePrefix: '',
     priceNumber: '1,200',
@@ -14,7 +14,25 @@ const items = [
     extension: '',
   },
   {
+    icon: 'ph:users-four',
+    title: 'ヨンマ',
+    pricePrefix: '',
+    priceNumber: '300',
+    priceUnit: '円',
+    description: '',
+    extension: '',
+  },
+  {
     icon: 'ph:users-three',
+    title: 'サンマ',
+    pricePrefix: null,
+    priceNumber: '400',
+    priceUnit: '円',
+    description: '',
+    extension: '',
+  },
+  {
+    icon: 'ph:confetti',
     title: '早割',
     pricePrefix: null,
     priceNumber: '200',
@@ -31,8 +49,18 @@ const items = [
     description: '6時間以上ご利用で100円引き',
     extension: '',
   },
-]
+  {
+    icon: 'ph:confetti',
+    title: '学割',
+    pricePrefix: null,
+    priceNumber: '100',
+    priceUnit: '円引き',
+    description: '学生さんがお一人でもいれば100円引き。',
+    extension: '',
+  },
+];
 ---
+
 <section class="section plan" id="plan">
   <Image src={decoration2} alt="" class="deco" aria-hidden="true" />
   <div class="inner">
@@ -41,22 +69,23 @@ const items = [
     </div>
     <div class="content">
       <ul class="list">
-        {items.map((item) => (
-          <li class="card-item">
-            <Icon name={item.icon} class="icon" />
-            <h3 class="card-title">{item.title}</h3>
-            <p class="price">
-              {item.pricePrefix && <span class="price-prefix">{item.pricePrefix}</span>}
-              <span class="price-number">{item.priceNumber}</span>
-              <span class="price-unit">{item.priceUnit}</span>
-            </p>
-            <p class="description">{item.description}</p>
-            <p class="extension">{item.extension}</p>
-          </li>
-        ))}
+        {
+          items.map((item) => (
+            <li class="card-item">
+              <Icon name={item.icon} class="icon" />
+              <h3 class="card-title">{item.title}</h3>
+              <p class="price">
+                {item.pricePrefix && <span class="price-prefix">{item.pricePrefix}</span>}
+                <span class="price-number">{item.priceNumber}</span>
+                <span class="price-unit">{item.priceUnit}</span>
+              </p>
+              <p class="description">{item.description}</p>
+              <p class="extension">{item.extension}</p>
+            </li>
+          ))
+        }
       </ul>
     </div>
-    <p class="caution">※学生さんがお一人でもいれば100円引き。</p>
   </div>
 </section>
 
@@ -158,7 +187,7 @@ const items = [
     border-top: 1px solid $color-border;
     padding-top: 12px;
   }
-  
+
   .caution {
     text-align: center;
     margin-top: 40px;
