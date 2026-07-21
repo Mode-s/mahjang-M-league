@@ -2,7 +2,7 @@ export const siteConfig = {
   siteName: '麻雀スタジオMリーチ',
   lang: 'ja',
   locale: 'ja_JP',
-  url: 'https://mahjang-m-league.pages.dev/',
+  url: 'https://m-reach.pages.dev/',
   defaultOgImage: '/ogp.jpg',
 
   defaultTitle: '麻雀スタジオMリーチ',
